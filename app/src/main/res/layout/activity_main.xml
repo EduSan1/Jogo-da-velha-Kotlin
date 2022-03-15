@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/background_black">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/jojo_da"
+        android:textColor="#93EBFF"
+        android:textSize="65sp"
+        android:fontFamily="@font/montserrat_thin"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/veia"
+        android:fontFamily="@font/montserrat_thin"
+        android:textColor="#93EBFF"
+        android:textSize="65sp"
+        android:layout_marginBottom="450px"/>
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/selecione_um_modo"
+        android:fontFamily="@font/montserrat_light"
+        android:textColor="#93EBFF"
+        android:textSize="20sp" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/background_blue"
+        android:fontFamily="@font/montserrat_light"
+        android:text="@string/_1_vs_1"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:background="@drawable/background_blue"
+        android:text="@string/computador"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        />
+
+</LinearLayout>

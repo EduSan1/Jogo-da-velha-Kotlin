@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">jogoDaVeia</string>
+    <string name="jojo_da">JoJo da</string>
+    <string name="veia">veia</string>
+    <string name="selecione_um_modo">Selecione um modo:</string>
+    <string name="_1_vs_1">1 VS 1</string>
+    <string name="computador">Computador</string>
+    <string name="dificuldade">dificuldade</string>
+    <string name="selecione_uma">Selecione uma</string>
+    <string name="dark_souls_das_veia">Dark Souls das veia</string>
+    <string name="m_dio">Médio</string>
+    <string name="f_cil">Fácil</string>
+    <string name="f_cil">Fácil</string>
+    <string name="m_dio">Médio</string>
+</resources>

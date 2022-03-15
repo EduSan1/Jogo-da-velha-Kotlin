@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".dificuldadeActivity"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/background_black">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/selecione_uma"
+        android:textColor="#93EBFF"
+        android:textSize="45sp"
+        android:fontFamily="@font/montserrat_thin"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dificuldade"
+        android:fontFamily="@font/montserrat_thin"
+        android:textColor="#93EBFF"
+        android:textSize="45sp"
+        android:layout_marginBottom="450px"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/background_blue"
+        android:fontFamily="@font/montserrat_light"
+        android:text="@string/f_cil"
+        android:textAllCaps="@string/f_cil"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:background="@drawable/background_blue"
+        android:text="@string/m_dio"
+        android:textColor="@color/black"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:background="@drawable/background_blue"
+        android:text="@string/dark_souls_das_veia"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        />
+
+</LinearLayout>
