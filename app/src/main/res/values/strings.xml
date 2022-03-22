@@ -10,6 +10,9 @@
     <string name="dark_souls_das_veia">Dark Souls das veia</string>
     <string name="m_dio">Médio</string>
     <string name="f_cil">Fácil</string>
-    <string name="f_cil">Fácil</string>
-    <string name="m_dio">Médio</string>
+    <string name="jogador_1">Jogador 1</string>
+    <string name="jogador_vs_jogador">Jogador Vs Jogador</string>
+    <string name="jogador_2">Jogador 2</string>
+    <string name="o_vencedor">O vencedor é</string>
+    <string name="o_vencedor_o">O vencedor é o</string>
 </resources>

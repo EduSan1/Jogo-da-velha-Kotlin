@@ -8,9 +8,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.JogoDaVeia">
+        android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
-            android:name=".jogoActivity"
+            android:name=".vencedorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".jogoPlayersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".jogoComputadorActivity"
             android:exported="false" />
         <activity
             android:name=".dificuldadeActivity"
