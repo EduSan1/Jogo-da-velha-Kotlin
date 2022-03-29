@@ -5,6 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
+
+var vez = "jogador2"
+var placarJogadorUmInternoI = 0
+var placarJogadorDoisInternoI = 0
 
 class jogoPlayersActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,6 +18,15 @@ class jogoPlayersActivity : AppCompatActivity() {
 
         val voltar = findViewById<ImageView>(R.id.voltar)
         voltar.setOnClickListener{ voltarHome()}
+
+        val placarJogadorUm = findViewById<TextView>(R.id.placarJogadorUm)
+        val placarJogadorDois = findViewById<TextView>(R.id.placarJogadorDois)
+
+        val viewJogadorUm = findViewById<Button>(R.id.viewJogadorUm)
+        val viewJogadorDois = findViewById<Button>(R.id.viewJogadorDois)
+
+        val viewJogadores: Array<Button> = arrayOf(viewJogadorUm,viewJogadorDois)
+
 
         val btn1 = findViewById<Button>(R.id.botao1)
         val btn2 = findViewById<Button>(R.id.botao2)
@@ -23,88 +37,171 @@ class jogoPlayersActivity : AppCompatActivity() {
         val btn7 = findViewById<Button>(R.id.botao7)
         val btn8 = findViewById<Button>(R.id.botao8)
         val btn9 = findViewById<Button>(R.id.botao9)
-        val marcador: Array<String> = arrayOf("teste","teste","teste","teste","teste","teste","teste","teste","teste")
+
+        val botoes: Array<Button> = arrayOf(btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9)
+
+        val marcador: Array<String> = arrayOf("1","2","3","4","5","6","7","8","9")
+
+        var placarJogadorUmInterno = 0
+        var placarJogadorDoisInterno = 0
+
 
 
         btn1.setOnClickListener {
-            marcador[0] = quemJogou()
-            suaVez(btn1)
-            btn1.text = "${marcador[0]}"
+            marcador[0] = vez
+            btn1.text = suaVez(marcador[0],btn1, viewJogadores)
+            vencedor(marcador,placarJogadorDois,placarJogadorUm,botoes, viewJogadores)
         }
+
         btn2.setOnClickListener{
             marcador[1] = quemJogou()
-            suaVez(btn2)
-
-            btn2.text = "${marcador[1]}"
+            btn2.text = suaVez(marcador[1],btn2, viewJogadores)
+            vencedor(marcador,placarJogadorDois,placarJogadorUm,botoes, viewJogadores)
         }
+
         btn3.setOnClickListener{
             marcador[2] = quemJogou()
-            suaVez(btn3)
+            btn3.text = suaVez(marcador[2],btn3,viewJogadores)
+            vencedor(marcador,placarJogadorDois,placarJogadorUm,botoes, viewJogadores)}
 
-            btn3.text = "${marcador[2]}"
-        }
         btn4.setOnClickListener{
             marcador[3] = quemJogou()
-            suaVez(btn4)
+            btn4.text = suaVez(marcador[3],btn4,viewJogadores)
+            vencedor(marcador,placarJogadorDois,placarJogadorUm,botoes, viewJogadores)  }
 
-            btn4.text = "${marcador[3]}"
-        }
         btn5.setOnClickListener{
             marcador[4] = quemJogou()
-            suaVez(btn5)
+            btn5.text = suaVez(marcador[4],btn5, viewJogadores)
+            vencedor(marcador,placarJogadorDois,placarJogadorUm,botoes, viewJogadores)   }
 
-            btn5.text = "${marcador[4]}"
-        }
         btn6.setOnClickListener{
             marcador[5] = quemJogou()
-            suaVez(btn6)
+            btn6.text = suaVez(marcador[5],btn6,viewJogadores)
+            vencedor(marcador,placarJogadorDois,placarJogadorUm,botoes, viewJogadores) }
 
-            btn6.text = "${marcador[5]}"
-        }
         btn7.setOnClickListener{
             marcador[6] = quemJogou()
-            suaVez(btn7)
+            btn7.text = suaVez(marcador[6],btn7,viewJogadores)
+            vencedor(marcador,placarJogadorDois,placarJogadorUm,botoes, viewJogadores)   }
 
-            btn7.text = "${marcador[6]}"
-        }
         btn8.setOnClickListener{
             marcador[7] = quemJogou()
-            suaVez(btn8)
-            btn8.text = "${marcador[7]}"
-        }
+            btn8.text = suaVez(marcador[7],btn8,viewJogadores)
+            vencedor(marcador,placarJogadorDois,placarJogadorUm,botoes, viewJogadores)   }
+
         btn9.setOnClickListener{
-
             marcador[8] = quemJogou()
-            suaVez(btn9)
-            btn9.text = "${marcador[8]}"
+            btn9.text = suaVez(marcador[8],btn9,viewJogadores)
+            vencedor(marcador,placarJogadorDois,placarJogadorUm,botoes,viewJogadores)  }
+
+    }
+
+    private fun vencedor(
+        marcador: Array<String>,
+        placarJogadorDois : TextView,
+        placarJogadorUm : TextView,
+        botoes: Array<Button>,
+        viewJogadores: Array<Button>
+    ) {
+        if (venceu(marcador) == true) {
+            if (vez == "jogador1" ){
+                placarJogadorUmInternoI++
+                resetarJogo(botoes,marcador,viewJogadores)
+                placarJogadorUm.text = placarJogadorUmInternoI.toString()
+            }else if (vez == "jogador2" ){
+                placarJogadorDoisInternoI++
+                placarJogadorDois.text = placarJogadorDoisInternoI.toString()
+                resetarJogo(botoes,marcador,viewJogadores)
+            }
+
+            if (placarJogadorUmInternoI == 3 || placarJogadorDoisInternoI == 3) {
+                placarJogadorDoisInternoI =0
+                placarJogadorUmInternoI = 0
+                val intent = Intent(this, vencedorActivity::class.java)
+                startActivity(intent)
+            }
+
+
+
         }
+    }
 
+    private fun resetarJogo(botoes : Array<Button>, marcador: Array<String>, viewJogadores: Array<Button>) {
+        var index=0
+        while ( index <=8 ) {
+            botoes[index].text = ""
+            botoes[index].isEnabled = true
+            marcador[index] = index.toString()
+            index++
 
+        }
+        vez = "jogador1" +
+                ""
+        mudarCorBotao(viewJogadores)
 
+    }
 
+    private fun venceu(marcador : Array<String>) : Boolean{
+        if (marcador[0] == marcador[1] && marcador[0] == marcador[2]) {
+            return true
+        }else if (marcador[3] == marcador[4] && marcador[3] == marcador[5]){
+            return true
+        }else if (marcador[6] == marcador[7] && marcador[6] == marcador[8]){
+            return true
+        }else if (marcador[0] == marcador[3] && marcador[0] == marcador[6]){
+            return true
+        }else if (marcador[1] == marcador[4] && marcador[1] == marcador[7]){
+            return true
+        }else if (marcador[2] == marcador[5] && marcador[2] == marcador[8]) {
+            return true
+        }else if (marcador[0] == marcador[4] && marcador[0] == marcador[8]){
+            return true
+        }else if (marcador[2] == marcador[4] && marcador[2] == marcador[6]){
+            return true
+        }else {
+            return false
+        }
     }
 
 
 
-    var vez = "jogador1"
 
     private fun quemJogou(): String {
         return vez
     }
 
-    private fun suaVez(botao:Button) {
-            var idBotao = ""
-        if (vez=="jogador1"){
-            botao.text ="x"
-            vez = "jogador2"
-             idBotao = "${botao.id}j1"
+    private fun suaVez(jogador : String, botao: Button, viewJogadores: Array<Button>): String {
 
-        }else if (vez=="jogador2") {
-            botao.text ="o"
+        var marca = "";
+        if (jogador=="jogador1"){
+            marca ="x"
+            mudarCorBotao(viewJogadores)
+            vez = "jogador2"
+
+        }else if (jogador=="jogador2") {
+            marca ="o"
+            viewJogadores[0].setBackgroundResource(R.drawable.background_desabilitado)
+            viewJogadores[1].setBackgroundResource(R.drawable.background_blue)
+            mudarCorBotao(viewJogadores)
             vez = "jogador1"
-             idBotao = "${botao.id}j2"
         }
         botao.isEnabled = false
+
+        return marca
+
+    }
+
+    private fun mudarCorBotao(viewJogadores: Array<Button>) {
+
+        if (vez == "jogador1") {
+            viewJogadores[0].setBackgroundResource(R.drawable.background_blue)
+            viewJogadores[1].setBackgroundResource(R.drawable.background_desabilitado)
+        } else if (vez == "jogador2") {
+            viewJogadores[1].setBackgroundResource(R.drawable.background_blue)
+            viewJogadores[0].setBackgroundResource(R.drawable.background_desabilitado)
+        }
+
+
     }
 
     private fun voltarHome() {
