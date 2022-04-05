@@ -54,43 +54,43 @@ class jogoPlayersActivity : AppCompatActivity() {
         }
 
         btn2.setOnClickListener{
-            marcador[1] = quemJogou()
+            marcador[1] = vez
             btn2.text = suaVez(marcador[1],btn2, viewJogadores)
             vencedor(marcador,placarJogadorDois,placarJogadorUm,botoes, viewJogadores)
         }
 
         btn3.setOnClickListener{
-            marcador[2] = quemJogou()
+            marcador[2] = vez
             btn3.text = suaVez(marcador[2],btn3,viewJogadores)
             vencedor(marcador,placarJogadorDois,placarJogadorUm,botoes, viewJogadores)}
 
         btn4.setOnClickListener{
-            marcador[3] = quemJogou()
+            marcador[3] = vez
             btn4.text = suaVez(marcador[3],btn4,viewJogadores)
             vencedor(marcador,placarJogadorDois,placarJogadorUm,botoes, viewJogadores)  }
 
         btn5.setOnClickListener{
-            marcador[4] = quemJogou()
+            marcador[4] = vez
             btn5.text = suaVez(marcador[4],btn5, viewJogadores)
             vencedor(marcador,placarJogadorDois,placarJogadorUm,botoes, viewJogadores)   }
 
         btn6.setOnClickListener{
-            marcador[5] = quemJogou()
+            marcador[5] = vez
             btn6.text = suaVez(marcador[5],btn6,viewJogadores)
             vencedor(marcador,placarJogadorDois,placarJogadorUm,botoes, viewJogadores) }
 
         btn7.setOnClickListener{
-            marcador[6] = quemJogou()
+            marcador[6] = vez
             btn7.text = suaVez(marcador[6],btn7,viewJogadores)
             vencedor(marcador,placarJogadorDois,placarJogadorUm,botoes, viewJogadores)   }
 
         btn8.setOnClickListener{
-            marcador[7] = quemJogou()
+            marcador[7] = vez
             btn8.text = suaVez(marcador[7],btn8,viewJogadores)
             vencedor(marcador,placarJogadorDois,placarJogadorUm,botoes, viewJogadores)   }
 
         btn9.setOnClickListener{
-            marcador[8] = quemJogou()
+            marcador[8] = vez
             btn9.text = suaVez(marcador[8],btn9,viewJogadores)
             vencedor(marcador,placarJogadorDois,placarJogadorUm,botoes,viewJogadores)  }
 
@@ -123,6 +123,8 @@ class jogoPlayersActivity : AppCompatActivity() {
 
 
 
+        } else if (empate(botoes) == true) {
+            resetarJogo(botoes,marcador,viewJogadores)
         }
     }
 
@@ -163,11 +165,20 @@ class jogoPlayersActivity : AppCompatActivity() {
         }
     }
 
-
-
-
-    private fun quemJogou(): String {
-        return vez
+    private fun empate(button : Array<Button>) : Boolean{
+        if (button[0].isEnabled == false &&
+            button[1].isEnabled == false &&
+            button[2].isEnabled == false &&
+            button[3].isEnabled == false &&
+            button[4].isEnabled == false &&
+            button[5].isEnabled == false &&
+            button[6].isEnabled == false &&
+            button[7].isEnabled == false &&
+            button[8].isEnabled == false ) {
+            return  true
+        }else {
+            return false
+        }
     }
 
     private fun suaVez(jogador : String, botao: Button, viewJogadores: Array<Button>): String {

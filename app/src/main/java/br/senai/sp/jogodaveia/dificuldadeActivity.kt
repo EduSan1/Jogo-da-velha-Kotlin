@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.ImageView
 
 class dificuldadeActivity : AppCompatActivity() {
@@ -32,7 +31,7 @@ class dificuldadeActivity : AppCompatActivity() {
     }
 
     private fun jogoDificil() {
-        val intent = Intent(this, jogoComputadorActivity::class.java)
+        val intent = Intent(this, jogoComputadorFacilActivity::class.java)
         var dificuldade = "Dark Souls das Veia";
         intent.putExtra("dificuldade",dificuldade)
         startActivity(intent)
@@ -40,14 +39,14 @@ class dificuldadeActivity : AppCompatActivity() {
     }
 
     private fun jogoMedio() {
-        val intent = Intent(this, jogoComputadorActivity::class.java)
+        val intent = Intent(this, jogoComputadorFacilActivity::class.java)
         var dificuldade = "Médio";
         intent.putExtra("dificuldade",dificuldade)
         startActivity(intent)
     }
 
     private fun jogoFacil() {
-        val intent = Intent(this, jogoComputadorActivity::class.java)
+        val intent = Intent(this, jogoComputadorFacilActivity::class.java)
         var dificuldade = "Fácil";
         intent.putExtra("dificuldade",dificuldade)
         startActivity(intent)
