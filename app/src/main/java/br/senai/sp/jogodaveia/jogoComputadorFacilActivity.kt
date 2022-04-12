@@ -9,6 +9,10 @@ import android.widget.TextView
 import kotlin.random.Random
 
 class jogoComputadorFacilActivity : AppCompatActivity() {
+
+    var placarJogadorInterno = 0
+    var placarComputadorInterno = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_jogo_computador_facil)
@@ -35,194 +39,142 @@ class jogoComputadorFacilActivity : AppCompatActivity() {
 
         val placarJogador = findViewById<TextView>(R.id.placarJogador)
         val placarComputador = findViewById<TextView>(R.id.placarComputador)
-        val txtView: Array<TextView> = arrayOf(placarComputador,placarJogador)
+        val placares: Array<TextView> = arrayOf(placarComputador,placarJogador)
 
         val botoes: Array<Button> = arrayOf(btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9)
         val marcador: Array<String> = arrayOf("1","2","3","4","5","6","7","8","9")
 
         btn1.setOnClickListener {
-            //preencher o botao com a opção do jogador
             btn1.text = "x"
             btn1.isEnabled = false
             marcador[0] = "jogador"
-            //sortear jogada do computador
-            sortearComputador(marcador,botoes,txtView)
+            vencedor(marcador,placares,botoes,0)
+            sortearComputador(marcador,botoes,placares)
         }
         btn2.setOnClickListener {
-            //preencher o botao com a opção do jogador
             btn2.text = "x"
             btn2.isEnabled = false
             marcador[1] = "jogador"
-            //sortear jogada do computador
-            sortearComputador(marcador,botoes,txtView)
+            vencedor(marcador,placares,botoes,1)
+            sortearComputador(marcador,botoes,placares)
         }
         btn3.setOnClickListener {
-            //preencher o botao com a opção do jogador
             btn3.text = "x"
             btn3.isEnabled = false
             marcador[2] = "jogador"
-            //sortear jogada do computador
-            sortearComputador(marcador,botoes,txtView)
+            vencedor(marcador,placares,botoes,2)
+            sortearComputador(marcador,botoes,placares)
         }
         btn4.setOnClickListener {
-            //preencher o botao com a opção do jogador
             btn4.text = "x"
             btn4.isEnabled = false
             marcador[3] = "jogador"
-            //sortear jogada do computador
-            sortearComputador(marcador,botoes,txtView)
+            vencedor(marcador,placares,botoes,3)
+            sortearComputador(marcador,botoes,placares)
         }
         btn5.setOnClickListener {
-            //preencher o botao com a opção do jogador
             btn5.text = "x"
             btn5.isEnabled = false
             marcador[4] = "jogador"
-            //sortear jogada do computador
-            sortearComputador(marcador,botoes,txtView)
+            vencedor(marcador,placares,botoes,4)
+            sortearComputador(marcador,botoes,placares)
         }
         btn6.setOnClickListener {
-            //preencher o botao com a opção do jogador
             btn6.text = "x"
             btn6.isEnabled = false
             marcador[5] = "jogador"
-            //sortear jogada do computador
-            sortearComputador(marcador,botoes,txtView)
+            vencedor(marcador,placares,botoes,5)
+            sortearComputador(marcador,botoes,placares)
         }
         btn7.setOnClickListener {
-            //preencher o botao com a opção do jogador
             btn7.text = "x"
             btn7.isEnabled = false
             marcador[6] = "jogador"
-            //sortear jogada do computador
-            sortearComputador(marcador,botoes,txtView)
+            vencedor(marcador,placares,botoes,6)
+            sortearComputador(marcador,botoes,placares)
         }
         btn8.setOnClickListener {
-            //preencher o botao com a opção do jogador
             btn8.text = "x"
             btn8.isEnabled = false
             marcador[7] = "jogador"
-            //sortear jogada do computador
-            sortearComputador(marcador,botoes,txtView)
+            vencedor(marcador,placares,botoes,7)
+            sortearComputador(marcador,botoes,placares)
         }
         btn9.setOnClickListener {
-            //preencher o botao com a opção do jogador
             btn9.text = "x"
             btn9.isEnabled = false
             marcador[8] = "jogador"
-            //sortear jogada do computador
-            sortearComputador(marcador,botoes,txtView)
+            vencedor(marcador,placares,botoes,8)
+            sortearComputador(marcador,botoes,placares)
         }
 
     }
 
+    private fun vencedor(
+        marcador: Array<String>,
+        placares: Array<TextView>,
+        botoes: Array<Button>,
+        index : Int
+    ) {
+        if (verificarVencedor(marcador) == true) {
+            var vencedorTexto = ""
+            if (marcador[index] == "jogador"){
+                placarJogadorInterno++
+                placares[1].text = placarJogadorInterno.toString()
+                resetarJogo(botoes,marcador)
+                vencedorTexto = "Jogador"
+            }else if (marcador[index] ==  "computador" ){
+                placarComputadorInterno++
+                placares[0].text = placarComputadorInterno.toString()
+                resetarJogo(botoes,marcador)
+                vencedorTexto = "Computador"
+            }
 
-    private fun sortearComputador(marcador: Array<String>, botoes: Array<Button>,txtView: Array<TextView>) {
+            if (placarJogadorInterno == 3 || placarComputadorInterno == 3) {
+                placarJogadorInterno = 0
+                placarComputadorInterno = 0
+                val intent = Intent(this, vencedorActivity::class.java)
+                intent.putExtra("vencedor", vencedorTexto)
+                startActivity(intent)
+            }
+
+
+
+        } else if (empate(botoes) == true) {
+            resetarJogo(botoes,marcador)
+        }
+    }
+
+
+    private fun sortearComputador(marcador: Array<String>, botoes: Array<Button>,placares: Array<TextView>) {
        var index = 0;
         var botaoSorteado = 0;
 
-        if (!verificarBotoes(botoes)) {
+        if (!empate(botoes)) {
             while (index == 0) {
 
                 botaoSorteado = Random.nextInt(0, 8)
 
 
                 if (marcador[botaoSorteado] != "jogador" && marcador[botaoSorteado] != "computador") {
-                    botoes[botaoSorteado].text = botaoSorteado.toString()
+                    botoes[botaoSorteado].text = "o"
                     marcador[botaoSorteado] = "computador"
                     botoes[botaoSorteado].isEnabled = false
                     index++
+                    vencedor(marcador,placares,botoes,botaoSorteado)
                 }
 
             }
         }
 
 
-    }
-
-    private fun vencedor(
-        marcador: Array<String>,
-        placarJogadorDois : TextView,
-        placarJogadorUm : TextView,
-        botoes: Array<Button>,
-        viewJogadores: Array<Button>
-    ) {
-        if (venceu(marcador) == true) {
-            if (vez == "jogador1" ){
-                placarJogadorUmInternoI++
-                resetarJogo(botoes,marcador,viewJogadores)
-                placarJogadorUm.text = placarJogadorUmInternoI.toString()
-            }else if (vez == "jogador2" ){
-                placarJogadorDoisInternoI++
-                placarJogadorDois.text = placarJogadorDoisInternoI.toString()
-                resetarJogo(botoes,marcador,viewJogadores)
-            }
-
-            if (placarJogadorUmInternoI == 3 || placarJogadorDoisInternoI == 3) {
-                placarJogadorDoisInternoI =0
-                placarJogadorUmInternoI = 0
-                val intent = Intent(this, vencedorActivity::class.java)
-                startActivity(intent)
-            }
 
 
 
-        } else if (verificarBotoes(botoes) == true) {
-            resetarJogo(botoes,marcador,viewJogadores)
-        }
-    }
 
-
-
-    private fun resetarJogo(botoes : Array<Button>, marcador: Array<String>, viewJogadores: Array<Button>) {
-        var index=0
-        while ( index <=8 ) {
-            botoes[index].text = ""
-            botoes[index].isEnabled = true
-            marcador[index] = index.toString()
-            index++
-
-        }
-//        mudarCorBotao(viewJogadores)
 
     }
 
-    private fun venceu(marcador : Array<String>) : Boolean{
-        if (marcador[0] == marcador[1] && marcador[0] == marcador[2]) {
-            return true
-        }else if (marcador[3] == marcador[4] && marcador[3] == marcador[5]){
-            return true
-        }else if (marcador[6] == marcador[7] && marcador[6] == marcador[8]){
-            return true
-        }else if (marcador[0] == marcador[3] && marcador[0] == marcador[6]){
-            return true
-        }else if (marcador[1] == marcador[4] && marcador[1] == marcador[7]){
-            return true
-        }else if (marcador[2] == marcador[5] && marcador[2] == marcador[8]) {
-            return true
-        }else if (marcador[0] == marcador[4] && marcador[0] == marcador[8]){
-            return true
-        }else if (marcador[2] == marcador[4] && marcador[2] == marcador[6]){
-            return true
-        }else {
-            return false
-        }
-    }
-
-    private fun verificarBotoes(button : Array<Button>) : Boolean{
-        if (button[0].isEnabled == false &&
-            button[1].isEnabled == false &&
-            button[2].isEnabled == false &&
-            button[3].isEnabled == false &&
-            button[4].isEnabled == false &&
-            button[5].isEnabled == false &&
-            button[6].isEnabled == false &&
-            button[7].isEnabled == false &&
-            button[8].isEnabled == false ) {
-            return  true
-        }else {
-            return false
-        }
-    }
 
     private fun voltarHome() {
         val intent = Intent(this, MainActivity::class.java)

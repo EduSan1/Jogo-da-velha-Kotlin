@@ -39,14 +39,16 @@
             android:textSize="30sp"
             android:layout_marginRight="5sp"
             android:fontFamily="@font/montserrat_regular"/>
+
         <TextView
+            android:id="@+id/vencedorText"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
+            android:layout_marginRight="5sp"
+            android:fontFamily="@font/montserrat_regular"
             android:text=""
             android:textColor="#93EBFF"
-            android:textSize="30sp"
-            android:layout_marginRight="5sp"
-            android:fontFamily="@font/montserrat_regular"/>
+            android:textSize="30sp" />
 
     </LinearLayout>
     <LinearLayout

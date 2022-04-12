@@ -114,6 +114,7 @@
             <Button
                 android:id="@+id/botao1"
                 android:textSize="35sp"
+                android:textColor="@color/black"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_margin="10sp"
@@ -122,6 +123,7 @@
             <Button
                 android:id="@+id/botao2"
                 android:textSize="35sp"
+                android:textColor="@color/black"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_margin="10sp"
@@ -129,6 +131,7 @@
             <Button
                 android:id="@+id/botao3"
                 android:textSize="35sp"
+                android:textColor="@color/black"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_margin="10sp"
@@ -145,6 +148,7 @@
             <Button
                 android:id="@+id/botao4"
                 android:textSize="35sp"
+                android:textColor="@color/black"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_margin="10sp"
@@ -152,6 +156,7 @@
             <Button
                 android:id="@+id/botao5"
                 android:textSize="35sp"
+                android:textColor="@color/black"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_margin="10sp"
@@ -159,6 +164,7 @@
             <Button
                 android:id="@+id/botao6"
                 android:textSize="35sp"
+                android:textColor="@color/black"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_margin="10sp"
@@ -174,6 +180,7 @@
             <Button
                 android:id="@+id/botao7"
                 android:textSize="35sp"
+                android:textColor="@color/black"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_margin="10sp"
@@ -181,6 +188,7 @@
             <Button
                 android:id="@+id/botao8"
                 android:textSize="35sp"
+                android:textColor="@color/black"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_margin="10sp"
@@ -188,6 +196,7 @@
             <Button
                 android:id="@+id/botao9"
                 android:textSize="35sp"
+                android:textColor="@color/black"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_margin="10sp"
